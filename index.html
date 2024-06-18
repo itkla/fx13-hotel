@@ -1,0 +1,801 @@
+<!DOCTYPE html>
+<html lang="ja">
+    <head>
+        <meta charset="utf-8">
+        <meta content="width=device-width, initial-scale=1.0" name="viewport">
+        <meta content="IE=edge" http-equiv="X-UA-Compatible">
+        <title>The コクーンタワー Hotel</title>
+        <style>
+            html, body {
+                height: 100%;
+                width: 100%;
+                margin: 0;
+                /* overflow: hidden; */
+            }
+            .container {
+                scroll-snap-type: y mandatory;
+                overflow: scroll;
+                height: 100%;
+                width: 100%;
+                /* white-space: nowrap; */
+                scroll-behavior: smooth;
+                /* display: flex; */
+            }
+            .hero {
+                /* flex: 0 0 auto; */
+                width: 100%;
+                height: 100%;
+                display: flex;
+                position: relative;
+                object-fit: cover;
+                scroll-snap-align: center;
+                overflow: scroll;
+                /* border: dashed 2px blue; */
+            }
+            .hero-gallery {
+                display: flex;
+                flex-wrap: wrap;
+                justify-content: center;
+                /* border: dotted 1px red; */
+                /* overflow: hidden; */
+                max-height: 100%;
+                max-width: 100%;
+                img {
+                    width: 25%;
+                    height: auto;
+                    padding: 0 1%;
+                    /* box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19); */
+                }
+            }
+            .hero-title {
+                text-align: left;
+                padding: 1%;
+                position: absolute;
+                left: 0;
+                bottom: 0;
+                
+                font-weight: bold;
+                overflow: hidden;
+            }
+            .hero-title h1 {
+                font-size: 3.5em;
+                font-weight: bold;
+                margin: 0;
+                padding: 0;
+            }
+            .hero-title .stext {
+                font-size: 1.5em;
+                font-weight: bold;
+                margin: 0;
+                padding: 0;
+            }
+            /* .h-scroll-container {
+                overflow: auto;
+                white-space: nowrap;
+                padding: 10px;
+                scroll-snap-type: x mandatory;
+            }
+            .h-scroll-container img {
+                padding: 10px;
+                width: 20%;
+                object-fit: contain;
+            } */
+
+            .h-tiles {
+                width: 100%;
+                height: 100%;
+                display: flex;
+                scroll-snap-align: center;
+                overflow-x: auto;
+                scroll-snap-type: x mandatory;
+                scroll-behavior: smooth;
+            }
+            .h-tile {
+                flex: 0 0 auto;
+                width: 100%;
+                height: 100%;
+                scroll-snap-align: center;
+            }
+
+            a.btn-white {
+                background-color: transparent;
+                border: solid 1px white;
+                color: white;
+                padding: 5px 10px;
+                /* text-align: center; */
+                text-decoration: none;
+                display: inline-block;
+                /* font-size: 16px; */
+                cursor: pointer;
+                border-radius: 5px;
+            }
+            a.btn-default {
+                background-color: transparent;
+                border: solid 1px black;
+                color: black;
+                padding: 5px 10px;
+                /* text-align: center; */
+                text-decoration: none;
+                display: inline-block;
+                /* font-size: 16px; */
+                cursor: pointer;
+                border-radius: 5px;
+            }
+
+            .modal {
+                display: none;
+                position: fixed;
+                z-index: 1;
+                left: 0;
+                top: 0;
+                width: 100%;
+                height: 100%;
+                overflow: auto;
+                
+            }
+            .modal-header {
+                padding: 2px 16px;
+            }
+            .modal-body {
+                padding: 2px 16px;
+            }
+            .modal-content {
+                position: relative;
+                background: white;
+                box-shadow: 0px 30px 50px 4px rgba(0,0,0,0.05);
+                margin: 15% auto;
+                padding: 5%;
+                /* border: 1px solid #888; */
+                width: 80%;
+                border-radius: 20px;
+                animation: popIn 0.2s ease;
+                color: black;
+            }
+            /* .modal-backdrop {
+                position: fixed;
+                top: 0;
+                left: 0;
+                width: 100vw;
+                height: 100vh;
+                background-color: rgba(0, 0, 0, 0.2);
+            } */
+            .close {
+                color: black;
+                float: right;
+                font-size: 28px;
+                font-weight: bold;
+            }
+            .close:hover,
+            .close:focus {
+                color: #000;
+                text-decoration: none;
+                cursor: pointer;
+            }
+            .cards {
+                width: 100%;
+                height: auto;
+                display: flex;
+                overflow-x: auto;
+                flex-wrap: nowrap;
+                padding: 4%;
+                align-items: center;
+                /* justify-content: center; */
+            }
+            .card {
+                flex: 0 0 auto;
+                /* overflow-x: auto; */
+                width: 40%;
+                height: 60%;
+                padding: 2%;
+                margin: 2%;
+                background: white;
+                
+                /* display: flex; */
+                border-radius: 10px;
+                box-shadow: 0px 10px 20px 2px rgba(0,0,0,0.05);
+                img {
+                    width: 100%;
+                    height: 100%;
+                    border-radius: 10px;
+                    object-fit: cover;
+                }
+            }
+            /* .card:hover {
+                animation: enlarge 0.5s ease;
+            } */
+            .card-title {
+                font-size: 1em;
+                font-weight: bold;
+                margin: 0;
+                padding: 0;
+                display: inline-flex;
+            }
+            
+            .card-title img.avatar {
+                width: 20%;
+                height: auto;
+                border-radius: 50%;
+                margin: 0;
+                padding: 0;
+                display: inline-flex;
+            }
+            .card-footer {
+                width: 100%;
+                height: 20%;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+            }
+
+            .gallery {
+                width: 100%;
+                height: 100%;
+                display: flex;
+                flex-wrap: wrap;
+                justify-content: center;
+                box-shadow: 0px 10px 20px 2px rgba(0,0,0,0.05);
+                overflow: hidden;
+            }
+
+            #hero1 {
+                background: url('img/hero/hero.jpg') no-repeat center center fixed;
+                
+                object-fit: cover;
+                background-repeat: no-repeat;
+                background-size: cover;
+                color: white;
+                display: auto;
+            }
+            #hero2 {
+                background: url('img/hero/hero2.jpg') no-repeat center center fixed;
+                object-fit: cover;
+                background-repeat: no-repeat;
+                background-size: cover;
+                color: white;
+                display: auto;
+            }
+            #hero3 {
+                background: url('img/hero/hero3.jpg') no-repeat center center fixed;
+                object-fit: cover;
+                background-repeat: no-repeat;
+                background-size: cover;
+                color: white;
+                display: auto;
+            }
+            /* #hero3-gallery {
+                display: flex;
+                flex-wrap: wrap;
+                justify-content: center;
+                border: dotted 1px red;
+                overflow: hidden;
+            } */
+            #gallery {
+                /* background: url('img/hero/hero4.jpg') no-repeat center center fixed; */
+                object-fit: cover;
+                background-repeat: no-repeat;
+                background-size: cover;
+                display: auto;
+            }
+
+            #more-info1 {
+                background: url('img/hero/mf1.JPG') no-repeat center center fixed;
+                object-fit: cover;
+                background-repeat: no-repeat;
+                background-size: cover;
+                display: auto;
+            }
+            #more-info2 {
+                background: url('img/hero/mf2.JPG') no-repeat center center fixed;
+                object-fit: cover;
+                background-repeat: no-repeat;
+                background-size: cover;
+                display: auto;
+            }
+            /* #hero5 {
+                background: url('https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1620.202212915709!2d139.69566003878313!3d35.69166419314601!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x60188cd6981dce11%3A0x4c93aeebef13825d!2sTokyo%20Mode%20Gakuen!5e0!3m2!1sen!2sjp!4v1718257670376!5m2!1sen!2sjp') no-repeat center center fixed;
+                object-fit: cover;
+                background-repeat: no-repeat;
+                background-size: cover;
+                display: auto;
+            } */
+            #navbar {
+                width: 100%;
+                overflow: hidden;
+                /* position: fixed; */
+            }
+            #navbar ul {
+                list-style-type: none;
+                width: 97%;
+                margin: 0;
+                padding: 1%;
+                /* overflow: hidden; */
+                /* background-color: #333; */
+                /* border: dotted 2px red; */
+                justify-content: center;
+                position: absolute;
+            }
+            #navbar ul li {
+                display: inline-block;
+                
+            }
+            #navbar .logo {
+                font-size: 1.5em;
+                font-weight: bold;
+            }
+            #navbar ul .active {
+                text-decoration: underline dashed white;
+            }
+            #navbar ul li a {
+                display: block;
+                color: white;
+                text-align: center;
+                padding: 14px 16px;
+                text-decoration: none;
+            }
+            /* #hero-title {
+                text-align: left;
+                padding: 1%;
+                position: absolute;
+                left: 0;
+                bottom: 0;
+                font-size: 2em;
+                font-weight: bold;
+            } */
+
+
+            /* arrow cta */
+            .down-indicator {
+                position: absolute;
+                bottom: 1%;
+                left: 50%;
+                transform: translateX(-50%);
+                justify-content: center;
+                font-size: 2em;
+                color: rgb(255, 255, 255, 1);
+                animation-name: downCTA;
+                animation-duration: 1s;
+                animation-iteration-count: infinite;
+                animation-direction: alternate-reverse;
+            }
+            .right-indicator {
+                position: absolute;
+                right: 1%;
+                top: 50%;
+                transform: translateY(-50%);
+                justify-content: center;
+                text-decoration: bold;
+                font-size: 2em;
+                color: rgb(255, 255, 255, 1);
+                animation-name: rightCTA;
+                animation-duration: 1s;
+                animation-iteration-count: infinite;
+                animation-direction: alternate-reverse;
+            }
+
+            .up-indicator {
+                text-decoration: bold;
+                position: absolute;
+                top: 1%;
+                left: 50%;
+                transform: translateX(-50%);
+                justify-content: center;
+                font-size: 2em;
+                color: rgb(255, 255, 255, 1);
+                animation-name: upCTA;
+                animation-duration: 1s;
+                animation-iteration-count: infinite;
+                animation-direction: alternate-reverse;
+            }
+            .left-indicator {
+                text-decoration: bold;
+                position: absolute;
+                left: 1%;
+                top: 50%;
+                transform: translateY(-50%);
+                justify-content: center;
+                font-size: 2em;
+                color: rgb(255, 255, 255, 1);
+                animation-name: leftCTA;
+                animation-duration: 1s;
+                animation-iteration-count: infinite;
+                animation-direction: alternate-reverse;
+            }
+
+            @keyframes downCTA {
+                0% {
+                    transform: translateY(10px);
+                }
+                100% {
+                    transform: translateY(0px);
+                }
+            }
+            @keyframes rightCTA {
+                0% {
+                    transform: translateX(10px);
+                }
+                100% {
+                    transform: translateX(0px);
+                }
+            }
+            @keyframes leftCTA {
+                0% {
+                    transform: translateX(-10px);
+                }
+                100% {
+                    transform: translateX(0px);
+                }
+            }
+            @keyframes upCTA {
+                0% {
+                    transform: translateY(-10px);
+                }
+                100% {
+                    transform: translateY(0px);
+                }
+            }
+
+            /* misc. animations */
+            @keyframes fadeIn {
+                0% {
+                    opacity: 0;
+                }
+                100% {
+                    opacity: 1;
+                }
+            }
+            @keyframes fadeOut {
+                0% {
+                    opacity: 1;
+                }
+                100% {
+                    opacity: 0;
+                }
+            }
+            @keyframes fromtop {
+                from {
+                    top: -300px; opacity: 0;
+                }
+                to {
+                    top: 0; opacity: 1;
+                }
+            }
+            @keyframes enlarge {
+                from {
+                    transform: scale(0);
+                }
+                to {
+                    transform: scale(1);
+                }
+            }
+            @keyframes popIn {
+                from {
+                    opacity: 0;
+                    transform: scale(0);
+                }
+                to {
+                    opacity: 1;
+                    transform: scale(1);
+                }
+            }
+            @keyframes popOut {
+                from {
+                    opacity: 1;
+                    transform: scale(1);
+                }
+                to {
+                    opacity: 0;
+                    transform: scale(0);
+                }
+            }
+        </style>
+    </head>
+    <body>
+        <div id="content" class="container">
+            <div id="hero1" class="hero">
+                <div id="navbar">
+                    <nav>
+                        <ul>
+                            <li id="nav-logo"><a id="site-title" href="#"></a></li>
+                            <li id="nav-home" class="active"><a href="#">Home</a></li>
+                            <li id="nav-about" class=""><a href="#">About</a></li>
+                            <li id="nav-access"><a href="#">Access</a></li>
+                            <li id="nav-recommend"><a href="#recommend">Recommendations</a></li>
+                            <li id="nav-reserve" style="float: right;"><a class="btn-white">Reserve</a></li>
+                        </ul>
+                    </nav>
+                </div>
+                <!-- <div id="resv-modal-backdrop" class="modal-backdrop"></div> -->
+                <div id="reservation" class="modal" onload="fetchReservations()">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <span class="close">&times;</span>
+                            <h2>Reservation</h2>
+                        </div>
+                        <div class="modal-body">
+                            <p>Some text in the Modal Body</p>
+                            <p>Some other text...</p>
+                        </div>
+                    </div>
+                </div>
+                <div id="hero1-title" class="hero-title">
+                    <h1>THE COCOON TOWER</h1>
+                    <span class="stext"><a href="reserve.php" target="_blank"></a>Book now</span>
+                </div>
+                <span class="down-indicator">&darr;</span>
+            </div>
+            <div id="hero2" class="hero">
+                <div id="hero2-title" class="hero-title">
+                    <h1>AN ICONIC LANDMARK</h1>
+                    <span class="stext"></span> 
+                </div>
+            </div>
+            <div id="hero3" class="hero">
+                <div id="hero3-title" class="hero-title">
+                    <div id="hero3-gallery" class="hero-gallery">
+                        <!-- <img src="img/gallery/01.jpg" alt="Gallery 1">
+                        <img src="img/gallery/02.jpg" alt="Gallery 2">
+                        <img src="img/gallery/03.jpg" alt="Gallery 3"> -->
+                    </div>
+                    <h1>A MODERN CLASSIC</h1>
+                    <span class="stext">Built in 2008, the モード学園コクーンタワー is home to three schools: HAL, Mode, and Iko</span>
+                </div>
+            </div>
+            <div class="h-tiles">
+                <div class="h-tile">
+                    <div id="more-info1" class="hero">
+                        <div id="" class="hero-title">
+                            <h1>Horizontal test scroll</h1>
+                            <span class="stext">eatn a burger wit no hunny mustard</span>
+                        </div>
+                        <span class="right-indicator">&rarr;</span>
+                    </div>
+                </div>
+                <div class="h-tile">
+                    <div id="more-info2" class="hero">
+                        <div id="" class="hero-title">
+                            <h1>Horizontal test scroll</h1>
+                            <span class="stext">eatn a burger wit no hunny mustard</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="h-tile">
+                    <div id="more-info3" class="hero">
+                        <div id="" class="hero-title">
+                            <h1>Horizontal test scroll</h1>
+                            <span class="stext">eatn a burger wit no hunny mustard</span>
+                        </div>
+                        <div class="modal"></div>
+                        <a class="btn-default">Modal test</a>
+                    </div>
+                </div>
+            </div>
+            <div id="gallery" class="hero">
+                <div class="gallery">
+                    <!-- TODO: not working? -->
+                    <img src="img/gallery/01.jpg" alt="Gallery 1">
+                    <img src="img/gallery/02.jpg" alt="Gallery 2">
+                    <img src="img/gallery/03.jpg" alt="Gallery 3">
+                </div>
+                <div id="hero4-title" class="hero-title">
+                    <h1>GALLERY</h1>
+                    <span class="stext"></span>
+                </div>
+                
+            </div>
+            <div id="recommend" class="hero">
+                <div id="hunter-rec" class="modal">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <span class="close">&times;</span>
+                            <h2>Hunter's Recommendations</h2>
+                        </div>
+                        <div class="modal-body">
+                            <p>This is a modal test</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="cards">
+                    <div class="card" style="border: solid #89cfeb 4px;">
+                        <div class="card-title">
+                            <img class="avatar" src="img/avatar/hunter.jpg">
+                            <h1>Hunter's おすすめ</h1>
+                        </div>
+                        <p>test</p>
+                        <div class="card-footer">
+
+                        </div>
+                        <a class="btn-default" id="h-rec-button">Learn more</a>
+                    </div>
+                    <div class="card" style="border: solid #f49ac2 4px;">
+                        <h1>test 2</h1>
+                        <p>test</p>
+                    </div>
+                    <div class="card" style="border: solid #98fb98 4px;">
+                        <h1>test 3</h1>
+                        <p>test</p>
+                    </div>
+                    <div class="card" style="border: solid #ffd900 4px;">
+                        <h1>test 4</h1>
+                        <p>test</p>
+                    </div>
+                </div>
+                <div id="hero5-title" class="hero-title">
+                    <h1>火曜日のおすすめ</h1>
+                    <span class="stext"></span>
+                </div>
+            </div>
+            <div id="access" class="hero">
+                    <iframe src="https://www.google.com/maps/d/u/0/embed?mid=1Bg9kp7AApmW0l66FeEsxdD2ntPkf7OU&ehbc=2E312F" style="width: 100%; height: 100%; border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                <div id="hero6-title" class="hero-title">
+                    <h1>ACCESS</h1>
+                    <span class="stext"></span>
+                </div>
+            </div>
+        </div>
+    </body>
+    <script>
+        function getBathroomStatus() {
+            return new Promise((resolve, reject) => {
+                fetch('./status.php?of=toilet')
+                .then(response => response.json())
+                .then(data => {
+                    console.log('Bathroom status:', data)
+                    resolve(data);
+                })
+                .catch(error => {
+                    console.error('Error:', error);
+                    reject(error);
+                });
+            });
+        }
+        const queryString = window.location.search;
+        const urlParams = new URLSearchParams(queryString);
+        if (urlParams.has('lang') || navigator.language || navigator.userLanguage) {
+            var lang = urlParams.get('lang') || navigator.language || navigator.userLanguage;
+            switch(true) {
+                case lang === 'ja' || lang === 'ja-JP':
+                    console.log('Language:', lang);
+                    document.title = 'コクーンタワー ホテル';
+                    document.getElementById('site-title').innerText = 'コクーンタワー ホテル';
+
+                    break;
+                case lang === 'en' || lang === 'en-US':
+                    console.log('Language:', lang);
+                    document.title = 'The Cocoon Tower Hotel';
+                    document.getElementById('site-title').innerText = 'The Cocoon Tower Hotel';
+                    break;
+                default:
+                    console.log('Language:', lang);
+                    document.title = 'The Cocoon Tower Hotel';
+                    document.getElementById('site-title').innerText = 'The Cocoon Tower Hotel';
+                    break;
+            }
+        }
+
+        // reservation control
+        var reservationModal = document.getElementById('reservation');
+        var reservationButton = document.getElementById('nav-reserve');
+        // var reservationBackdrop = document.getElementById('resv-modal-backdrop');
+        var reservationClose = document.getElementsByClassName('close')[0];
+        reservationButton.onclick = function() {
+            reservationModal.style.display = 'block';
+            // reservationBackdrop.style.display = 'block';
+        }
+        reservationClose.onclick = function() {
+            reservationModal.style.display = 'none';
+            // reservationBackdrop.style.display = 'none';
+        }
+        window.onclick = function(event) {
+            if (event.target == reservationModal) {
+                reservationModal.style.display = 'none';
+                // reservationBackdrop.style.display = 'none';
+            }
+        }
+
+        // recommendation modal control
+        var hunterRecModal = document.getElementById('hunter-rec');
+        var hunterRecButton = document.getElementById('h-rec-button');
+        var hunterRecClose = document.getElementsByClassName('close')[1];
+        hunterRecButton.onclick = function() {
+            hunterRecModal.style.display = 'block';
+        }
+        hunterRecClose.onclick = function() {
+            hunterRecModal.style.display = 'none';
+        }
+        window.onclick = function(event) {
+            if (event.target == hunterRecModal) {
+                hunterRecModal.style.display = 'none';
+            }
+        }
+
+
+        function fetchReservations() {
+            try {
+                fetch('./reservations.php?')
+                .then(response => response.json())
+                .then(data => {
+                    console.log('Reservation status:', data)
+                })
+                .catch(error => {
+                    console.error('Error:', error);
+                });
+            } catch (error) {
+                console.error('Error:', error);
+            }
+        }
+
+        function initMap() {
+            const map = new google.maps.Map(document.getElementById("map"), {
+                zoom: 8,
+                center: { lat: -34.397, lng: 150.644 },
+                styles: [
+            {
+                "elementType": "labels",
+                "stylers": [
+                {
+                    "visibility": "off"
+                }
+                ]
+            },
+            {
+                "featureType": "administrative.land_parcel",
+                "stylers": [
+                {
+                    "visibility": "off"
+                }
+                ]
+            },
+            {
+                "featureType": "administrative.neighborhood",
+                "stylers": [
+                {
+                    "visibility": "off"
+                }
+                ]
+            },
+            {
+                "featureType": "road.arterial",
+                "elementType": "labels",
+                "stylers": [
+                {
+                    "visibility": "off"
+                }
+                ]
+            },
+            {
+                "featureType": "road.highway",
+                "elementType": "labels",
+                "stylers": [
+                {
+                    "visibility": "off"
+                }
+                ]
+            },
+            {
+                "featureType": "road.local",
+                "stylers": [
+                {
+                    "visibility": "off"
+                }
+                ]
+            }
+        ]
+            });
+        }
+        // } else {
+        //     var lang = navigator.language || navigator.userLanguage;
+        //     switch(lang) {
+        //         case 'ja':
+        //             document.title = 'コクーンタワー ホテル';
+        //             break;
+        //         case 'en':
+        //             document.title = 'The Cocoon Tower Hotel';
+        //             break;
+        //         default:
+        //             document.title = 'The Cocoon Tower Hotel';
+        //             break;
+        //     }
+        // }
+        
+    </script>
+</html>

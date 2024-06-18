@@ -1,0 +1,20 @@
+{
+    "navbar": {
+        "title": "The Cocoon Hotel",
+        "home": "Home",
+        "about": "About",
+        "services": "Services",
+        "contact": "Contact",
+        "reserve": "Reserve"
+    },
+    "hero1": {
+        "title": "THE COCOON HOTEL",
+        "subtext": "A world-class experience in a world-class city"
+    },
+    "hero2": {
+        "title": "AN ICONIC LANDMARK",
+        "subtext": "Stay in luxury, dine in style"
+    }
+    
+    
+}
