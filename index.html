@@ -461,6 +461,19 @@
                 animation-iteration-count: infinite;
                 animation-direction: alternate-reverse;
             }
+            .icon-caution {
+                color: orange;
+            }
+            .icon-warning {
+                color: pink;
+            }
+            .icon-info {
+                color: lightblue;
+            }
+            .icon-success {
+                color: lightgreen;
+            }
+
             .nav-overlay {
                 height: 100%;
                 width: 0%;
@@ -676,7 +689,7 @@
                 <span id="site-title">The Cocoon Tower</span>
             </div>
             <div class="navbar-right">
-                <a id="nav-reserve" class="btn-default">Reserve</a>
+                <a id="nav-reserve" class="btn-default" onclick="openReservationModal()">Reserve</a>
             </div>
             <!-- <span style="text-align: center;">COCOON</span>TODO: put this mf in the center -->
             <!-- <a href="#">Home</a>
@@ -707,7 +720,7 @@
                         <a href="#hero3">Access</a>
                         <a href="#gallery">Gallery</a>
                         <a href="#recommend">Recommendations</a>
-                        <a id="nav-reserve" href="#">Reserve</a>
+                        <a id="nav-reserve" href="#" onclick="openReservationModal()">Reserve</a>
                     </div>
                     <div class="column">
                         <p>yep :)</p>
@@ -722,11 +735,22 @@
                     <div class="modal-content">
                         <div class="modal-header">
                             <span class="close">&times;</span>
-                            <h2 id="resv-title-str">Reservation</h2>
+                            <h2 id="resv-title-str">予約</h2>
                         </div>
                         <div class="modal-body">
-                            <p>Some text in the Modal Body</p>
-                            <p>Some other text...</p>
+                            <table>
+                                <tr>
+                                    <th class="icon-success" style="font-size: 1.5em;">&#9675;</th>
+                                    <th class="icon-caution" style="font-size: 1.5em;">&#9651;</th>
+                                    <th class="icon-warning" style="font-size: 1.5em;">&times;</th>
+                                </tr>
+                                <tr>
+                                    <td>空室あり</td>
+                                    <td>空室少し残り</td>
+                                    <td>空室なし</td>
+                                </tr>
+                            </table>
+                            <p>TODO: insert calendar here, with dates prefilled using fetchReservations()</p>
                         </div>
                     </div>
                 </div>
@@ -803,7 +827,7 @@
                             <h2>Hunter's Recommendations</h2>
                         </div>
                         <div class="modal-body">
-                            <p>This is a modal test</p>
+                            <p>yep</p>
                         </div>
                     </div>
                 </div>
@@ -902,10 +926,10 @@
 
         // reservation control
         var reservationModal = document.getElementById('reservation');
-        var reservationButton = document.getElementById('nav-reserve');
+        // var reservationButton = document.getElementById('nav-reserve');
         // var reservationBackdrop = document.getElementById('resv-modal-backdrop');
         var reservationClose = document.getElementsByClassName('close')[0];
-        reservationButton.onclick = function() {
+        function openReservationModal() {
             reservationModal.style.display = 'block';
             // reservationBackdrop.style.display = 'block';
         }
