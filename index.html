@@ -673,7 +673,7 @@
                 <a onclick="openNavOverlay()" style="float: left;">&#9776;</a>
             </div>
             <div class="navbar-center">
-                <span id="site-title"></span>
+                <span id="site-title">The Cocoon Tower</span>
             </div>
             <div class="navbar-right">
                 <a id="nav-reserve" class="btn-default">Reserve</a>
@@ -699,17 +699,18 @@
         <div id="nav-overlay" class="nav-overlay">
             <a href="javascript:void(0)" class="close-nav-overlay" onclick="closeNavOverlay()">&times;</a>
             <div class="nav-overlay-content">
-                <h2 id="site-title"></h2>
+                <h2 id="site-title">THE COCOON TOWER HOTEL</h2>
                 <div class="row">
                     <div class="column">
-                        <a href="#">Home</a>
-                        <a href="#">About</a>
-                        <a href="#">Access</a>
+                        <a href="#hero1">Home</a>
+                        <a href="#hero2">About</a>
+                        <a href="#hero3">Access</a>
+                        <a href="#gallery">Gallery</a>
                         <a href="#recommend">Recommendations</a>
                         <a id="nav-reserve" href="#">Reserve</a>
                     </div>
                     <div class="column">
-                        <p>bruh :(</p>
+                        <p>yep :)</p>
                     </div>
                 </div>
             </div>
@@ -852,6 +853,8 @@
         </div>
     </body>
     <script>
+
+        // fetch the bathroom status
         function getBathroomStatus() {
             return new Promise((resolve, reject) => {
                 fetch('./status.php?of=toilet')
@@ -867,10 +870,12 @@
             });
         }
 
+        // set copyright year
         var date = new Date();
         var year = date.getFullYear();
         document.getElementById('copyright-year').innerText = year;
 
+        // set the title of the page based on the language
         const queryString = window.location.search;
         const urlParams = new URLSearchParams(queryString);
         if (urlParams.has('lang') || navigator.language || navigator.userLanguage) {
@@ -932,6 +937,7 @@
         }
 
 
+        // call the bathroom status function
         function fetchReservations() {
             try {
                 fetch('./reservations.php?')
@@ -948,32 +954,46 @@
         }
 
 
-        var navbar = document.getElementById('navbar');
-        var navYOffset = navbar.offsetTop;
-        function stickyNav() {
-            if (window.pageYOffset >= navYOffset) {
-                navbar.classList.add('sticky');
-            } else {
-                navbar.classList.remove('sticky');
+        // load nav measurements AFTER DOM has loaded.
+        document.addEventListener('DOMContentLoaded', function() {
+            console.log('DOM loaded');
+            var navbar = document.getElementById('navbar');
+            var navYOffset = navbar.offsetTop;
+            function stickyNav() {
+                if (window.pageYOffset >= navYOffset) {
+                    navbar.classList.add('sticky');
+                } else {
+                    navbar.classList.remove('sticky');
+                }
             }
-        }
+        });
 
+        // opens the nav-overlay when openNavOverlay() is called
         function openNavOverlay() {
             document.getElementById('nav-overlay').style.width = '100%';
         }
-        // window.onclick = function(event) {
-        //     if (event.target == document.getElementById('nav-overlay')) {
-        //         document.getElementById('nav-overlay').style.width = '0%';
-        //     }
-        // }
+        
+        // closes the nav-overlay when closeNavOverlay() is called
         function closeNavOverlay() {
             document.getElementById('nav-overlay').style.width = '0%';
         }
-        document.querySelectorAll('.nav-overlay a').forEach(function (element) {
-                element.addEventListener('click', closeNavOverlay);
-                console.log('Event ')
-        });
 
+        // close the nav-overlay when clicking outside of the nav-overlay
+        window.onclick = function(event) {
+            if (event.target == document.getElementById('nav-overlay')) {
+                document.getElementById('nav-overlay').style.width = '0%';
+                console.log('clicked outside');
+            }
+        }
+
+        // close the nav-overlay when a link is clicked
+        var navLinks = document.getElementsByClassName('nav-overlay-content')[0].getElementsByTagName('a');
+        for (var i = 0; i < navLinks.length; i++) {
+            navLinks[i].addEventListener('click', function() {
+                document.getElementById('nav-overlay').style.width = '0%';
+            });
+        }
+        
         function initMap() {
             const map = new google.maps.Map(document.getElementById("map"), {
                 zoom: 8,
