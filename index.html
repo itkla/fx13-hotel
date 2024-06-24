@@ -99,6 +99,23 @@
             .column {
                 flex: 50%;
             }
+            .calendar {
+                justify-content: center;
+                align-items: center;
+                padding: 2%;
+                width: 100%;
+                border: whitesmoke 1px solid;
+                th {
+                    background-color: lightgray;
+                    padding: 30px;
+                }
+                td {
+                    
+                    padding: 40px;
+                    text-align: center;
+                }
+
+            }
             .h-tile {
                 flex: 0 0 auto;
                 width: 100%;
@@ -152,10 +169,11 @@
                 position: relative;
                 background: white;
                 box-shadow: 0px 30px 50px 4px rgba(0,0,0,0.05);
-                margin: 15% auto;
+                /* margin: 15% auto; */
                 padding: 5%;
                 /* border: 1px solid #888; */
-                width: 80%;
+                width: auto;
+                /* height: 100%; */
                 border-radius: 20px;
                 animation: popIn 0.2s ease;
                 color: black;
@@ -735,22 +753,49 @@
                     <div class="modal-content">
                         <div class="modal-header">
                             <span class="close">&times;</span>
-                            <h2 id="resv-title-str">予約</h2>
+                            <h2 id="resv-title-str">当ホテルに予約</h2>
                         </div>
                         <div class="modal-body">
-                            <table>
+                            <table id="calendar-legend">
                                 <tr>
                                     <th class="icon-success" style="font-size: 1.5em;">&#9675;</th>
                                     <th class="icon-caution" style="font-size: 1.5em;">&#9651;</th>
-                                    <th class="icon-warning" style="font-size: 1.5em;">&times;</th>
+                                    <th class="icon-warning" style="font-size: 1.5em;">&#10005;</th>
                                 </tr>
                                 <tr>
-                                    <td>空室あり</td>
-                                    <td>空室少し残り</td>
-                                    <td>空室なし</td>
+                                    <td style="font-size: 0.75em;">空室あり</td>
+                                    <td style="font-size: 0.75em;">空室少し残り</td>
+                                    <td style="font-size: 0.75em;">空室なし</td>
                                 </tr>
                             </table>
                             <p>TODO: insert calendar here, with dates prefilled using fetchReservations()</p>
+                            <table class="calendar" id="reservation-calendar">
+                                <tr id="daysOfWeek">
+                                    <th>日</th>
+                                    <th>月</th>
+                                    <th>火</th>
+                                    <th>水</th>
+                                    <th>木</th>
+                                    <th>金</th>
+                                    <th>土</th>
+                                </tr>
+                                <tr id="week-1">
+
+                                </tr>
+                                <tr id="week-2">
+                                    
+                                </tr>
+                                <tr id="week-3">
+
+                                </tr>
+                                <tr id="week-4">
+
+                                </tr>
+                                <tr id="week-5">
+
+                                </tr>
+                                <tr id="week-6">
+                            </table>
                         </div>
                     </div>
                 </div>
@@ -977,10 +1022,51 @@
             }
         }
 
+        function fillCalendar() {
+            var calendar = document.getElementById('reservation-calendar');
+            var daysOfWeek = document.getElementById('daysOfWeek');
+            var week1 = document.getElementById('week-1');
+            var week2 = document.getElementById('week-2');
+            var week3 = document.getElementById('week-3');
+            var week4 = document.getElementById('week-4');
+            var week5 = document.getElementById('week-5');
+            var week6 = document.getElementById('week-6');
+            var days = ['日', '月', '火', '水', '木', '金', '土'];
+            var date = new Date();
+            var month = date.getMonth();
+            var year = date.getFullYear();
+            var daysInMonth = new Date(year, month + 1, 0).getDate();
+            var firstDay = new Date(year, month, 1).getDay();
+            var lastDay = new Date(year, month, daysInMonth).getDay();
+            var day = 1;
+            var dayOfWeek = 0;
+            for (var i = 0; i < 6; i++) {
+                var week = document.getElementById('week-' + (i + 1));
+                for (var j = 0; j < 7; j++) {
+                    if (dayOfWeek < firstDay) {
+                        var empty = document.createElement('td');
+                        empty.innerText = '';
+                        week.appendChild(empty);
+                        dayOfWeek++;
+                    } else if (day <= daysInMonth) {
+                        var dayCell = document.createElement('td');
+                        dayCell.innerText = day;
+                        week.appendChild(dayCell);
+                        day++;
+                    } else {
+                        var empty = document.createElement('td');
+                        empty.innerText = '';
+                        week.appendChild(empty);
+                    }
+                }
+            }
+        }
+
 
         // load nav measurements AFTER DOM has loaded.
         document.addEventListener('DOMContentLoaded', function() {
             console.log('DOM loaded');
+            fillCalendar();
             var navbar = document.getElementById('navbar');
             var navYOffset = navbar.offsetTop;
             function stickyNav() {
