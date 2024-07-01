@@ -110,7 +110,7 @@
                     padding: 30px;
                 }
                 td {
-                    
+                    border: solid 1px green;
                     padding: 40px;
                     text-align: center;
                 }
@@ -264,6 +264,10 @@
                 overflow: hidden;
             }
 
+            #hero1.lazy {
+                background-image: none;
+                background-color: white;
+            }
             #hero1 {
                 background: url('img/hero/hero.jpg') no-repeat center center fixed;
                 
@@ -273,6 +277,10 @@
                 color: white;
                 display: auto;
             }
+            #hero2.lazy {
+                background-image: none;
+                background-color: white;
+            }
             #hero2 {
                 background: url('img/hero/hero2.jpg') no-repeat center center fixed;
                 object-fit: cover;
@@ -280,6 +288,10 @@
                 background-size: cover;
                 color: white;
                 display: auto;
+            }
+            #hero3.lazy {
+                background-image: none;
+                background-color: white;
             }
             #hero3 {
                 background: url('img/hero/hero3.jpg') no-repeat center center fixed;
@@ -379,6 +391,10 @@
                     text-align: center;
                     align-items: center;
                 }
+            }
+            .navbar.shrink {
+                padding: 0;
+                background: white;
             }
             .sticky {
                 position: fixed;
@@ -699,7 +715,7 @@
         </style>
     </head>
     <body>
-        <div class="navbar">
+        <div class="navbar" id="navbar">
             <div class="navbar-left">
                 <a onclick="openNavOverlay()" style="float: left;">&#9776;</a>
             </div>
@@ -746,14 +762,14 @@
                 </div>
             </div>
         </div>
-        <div id="content" class="container">
+        <div id="content" class="container" navcolor="white">
             <div id="hero1" class="hero">
                 <!-- <div id="resv-modal-backdrop" class="modal-backdrop"></div> -->
                 <div id="reservation" class="modal" onload="fetchReservations()">
                     <div class="modal-content">
                         <div class="modal-header">
                             <span class="close">&times;</span>
-                            <h2 id="resv-title-str">当ホテルに予約</h2>
+                            <h1 id="resv-title-str">当ホテルに予約</h1>
                         </div>
                         <div class="modal-body">
                             <table id="calendar-legend">
@@ -769,6 +785,7 @@
                                 </tr>
                             </table>
                             <p>TODO: insert calendar here, with dates prefilled using fetchReservations()</p>
+                            <span id="calendarMonth" class="month" style="align-items: center; font-weight: bold; font-size: 1.5em;"></span>
                             <table class="calendar" id="reservation-calendar">
                                 <tr id="daysOfWeek">
                                     <th>日</th>
@@ -805,13 +822,13 @@
                 </div>
                 <span class="down-indicator">&darr;</span>
             </div>
-            <div id="hero2" class="hero">
+            <div id="hero2" class="hero" navcolor="white">
                 <div id="hero2-title" class="hero-title">
                     <h1>AN ICONIC LANDMARK</h1>
                     <span class="stext">with an unprecedented view of the nightlife</span> 
                 </div>
             </div>
-            <div id="hero3" class="hero">
+            <div id="hero3" class="hero" navcolor="black">
                 <div id="hero3-title" class="hero-title">
                     <div id="hero3-gallery" class="hero-gallery">
                         <!-- <img src="img/gallery/01.jpg" alt="Gallery 1">
@@ -824,7 +841,7 @@
             </div>
             <div class="h-tiles">
                 <div class="h-tile">
-                    <div id="more-info1" class="hero">
+                    <div id="more-info1" class="hero" navcolor="black">
                         <div id="" class="hero-title">
                             <h1>Horizontal test scroll</h1>
                             <span class="stext">eatn a burger wit no hunny mustard</span>
@@ -907,7 +924,7 @@
                 </div>
             </div>
             <div id="access" class="hero">
-                    <iframe src="https://www.google.com/maps/d/u/0/embed?mid=1Bg9kp7AApmW0l66FeEsxdD2ntPkf7OU&ehbc=2E312F" style="width: 100%; height: 100%; border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                    <!-- <iframe src="https://www.google.com/maps/d/u/0/embed?mid=1Bg9kp7AApmW0l66FeEsxdD2ntPkf7OU&ehbc=2E312F" style="width: 100%; height: 100%; border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe> -->
                 <div id="hero6-title" class="hero-title">
                     <h1>ACCESS</h1>
                     <span class="stext"></span>
@@ -1034,6 +1051,8 @@
             var days = ['日', '月', '火', '水', '木', '金', '土'];
             var date = new Date();
             var month = date.getMonth();
+            document.getElementById('calendarMonth').innerText = date.toLocaleString('ja', { month: 'long' });
+            // var month = 7;
             var year = date.getFullYear();
             var daysInMonth = new Date(year, month + 1, 0).getDate();
             var firstDay = new Date(year, month, 1).getDay();
@@ -1051,6 +1070,16 @@
                     } else if (day <= daysInMonth) {
                         var dayCell = document.createElement('td');
                         dayCell.innerText = day;
+                        // var dayReservation = 'available';
+                        // if (dayReservation != "") {
+                        //     switch(dayReservation) {
+                        //         case 'available':
+                        //             dayCell.innerText = day;
+                        //             var icon = document.appendChild('span');
+                        //             icon.classList.add('icon-success');
+                        //             icon.innerText = '◯';
+                        //     }
+                        // }
                         week.appendChild(dayCell);
                         day++;
                     } else {
@@ -1066,17 +1095,40 @@
         // load nav measurements AFTER DOM has loaded.
         document.addEventListener('DOMContentLoaded', function() {
             console.log('DOM loaded');
+
+            // fill the calendar
             fillCalendar();
+
+            // lazy load images
+            // var lazyImages = document.getElementsByClassName('lazy');
+            // if ("IntersectionObserver" in windowu)
+
+            // navbar sticky
+            // var navbar = document.getElementById('navbar');
+            // var navYOffset = navbar.offsetTop;
+            // function stickyNav() {
+            //     if (window.pageYOffset >= navYOffset) {
+            //         navbar.classList.add('sticky');
+            //     } else {
+            //         navbar.classList.remove('sticky');
+            //     }
+            // }
             var navbar = document.getElementById('navbar');
             var navYOffset = navbar.offsetTop;
-            function stickyNav() {
+            function shrinkNav() {
                 if (window.pageYOffset >= navYOffset) {
-                    navbar.classList.add('sticky');
+                    navbar.classList.add('shrink');
+                    console.log('added class shrink to navbar');
                 } else {
-                    navbar.classList.remove('sticky');
+                    navbar.classList.remove('shrink');
+                    console.log('removed class shrink from navbar');
                 }
             }
         });
+        window.onscroll = function() {
+                // stickyNav();
+                shrinkNav();
+        }
 
         // opens the nav-overlay when openNavOverlay() is called
         function openNavOverlay() {
