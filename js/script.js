@@ -164,6 +164,36 @@ function fillCalendar() {
     }
 }
 
+// var navbar = document.getElementById('navbar');
+// var navYOffset = navbar.offsetTop;
+// function shrinkNav() {
+//     console.log('scrolling');
+//     if (window.pageYOffset >= navYOffset) {
+//         navbar.classList.add('shrink');
+//         console.log('added class shrink to navbar');
+//     } else {
+//         navbar.classList.remove('shrink');
+//         console.log('removed class shrink from navbar');
+//     }
+// }
+
+function shrinkNav() {
+    var hero1 = document.getElementById('hero1');
+    var navbar = document.getElementById('navbar');
+    var navbarTitle = document.getElementById('site-title');
+    console.log('hero1 offsetTop:', hero1.getBoundingClientRect());
+    if (hero1.getBoundingClientRect().top < -3) {
+        navbar.style.padding = '1%';
+        navbarTitle.style.fontSize = '1em';
+        // navbar.style.background = 'rgba(255, 255, 255, 0.8)';
+    } else {
+        navbar.style.padding = '2%';
+        navbarTitle.style.fontSize = '1.5em';
+        // console.log('expanding navbar');
+        // navbar.style.background = 'transparent';
+
+    }
+}
 
 // load nav measurements AFTER DOM has loaded.
 document.addEventListener('DOMContentLoaded', function() {
@@ -186,24 +216,12 @@ document.addEventListener('DOMContentLoaded', function() {
     //         navbar.classList.remove('sticky');
     //     }
     // }
-    var navbar = document.getElementById('navbar');
-    var navYOffset = navbar.offsetTop;
-    function shrinkNav() {
-        if (window.pageYOffset >= navYOffset) {
-            navbar.classList.add('shrink');
-            console.log('added class shrink to navbar');
-        } else {
-            navbar.classList.remove('shrink');
-            console.log('removed class shrink from navbar');
-        }
-    }
-});
-window.onscroll = function() {
-        // stickyNav();
+    document.getElementById('content').onscroll = function() {
+        console.log('scrolling');
         shrinkNav();
-}
-
-
+    }
+    
+});
 
 function initMap() {
     const map = new google.maps.Map(document.getElementById("map"), {

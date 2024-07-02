@@ -8,68 +8,68 @@
         <link rel="stylesheet" href="css/style.css">
     </head>
     <body>
-        <div class="navbar" id="navbar">
-            <div class="navbar-left">
-                <a onclick="toggleNavOverlay()" style="float: left;">&#9776;</a>
+        <div id="content" class="container" navcolor="white">
+            <div class="navbar" id="navbar">
+                <div class="navbar-left">
+                    <a onclick="toggleNavOverlay()" style="float: left;">&#9776;</a>
+                </div>
+                <div class="navbar-center">
+                    <span id="site-title" class="site-title">The Cocoon Tower</span>
+                </div>
+                <div class="navbar-right">
+                    <a id="nav-reserve" class="btn-default" onclick="toggleModal('reservation')">Reserve</a>
+                </div>
+                <!-- <span style="text-align: center;">COCOON</span>TODO: put this mf in the center -->
+                <!-- <a href="#">Home</a>
+                <a href="#about">About</a>
+                <a href="#gallery">Gallery</a>
+                <a href="#recommend">Recommendations</a>
+                <a href="#nav-reserve">Reserve</a> -->
+                <!-- <nav>
+                    <ul>
+                        <span onclick="openNavOverlay()">&#9776;</span>
+                        <li id="nav-logo"><a id="site-title" href="#"></a></li>
+                        <li id="nav-home" class="active"><a href="#">Home</a></li>
+                        <li id="nav-about" class=""><a href="#">About</a></li>
+                        <li id="nav-access"><a href="#">Access</a></li>
+                        <li id="nav-recommend"><a href="#recommend">Recommendations</a></li>
+                        <li id="nav-reserve" style="float: right;"><a class="btn-white">Reserve</a></li> 
+                    </ul>
+                </nav>-->
             </div>
-            <div class="navbar-center">
-                <span id="site-title">The Cocoon Tower</span>
-            </div>
-            <div class="navbar-right">
-                <a id="nav-reserve" class="btn-default" onclick="toggleModal('reservation')">Reserve</a>
-            </div>
-            <!-- <span style="text-align: center;">COCOON</span>TODO: put this mf in the center -->
-            <!-- <a href="#">Home</a>
-            <a href="#about">About</a>
-            <a href="#gallery">Gallery</a>
-            <a href="#recommend">Recommendations</a>
-            <a href="#nav-reserve">Reserve</a> -->
-            <!-- <nav>
-                <ul>
-                    <span onclick="openNavOverlay()">&#9776;</span>
-                    <li id="nav-logo"><a id="site-title" href="#"></a></li>
-                    <li id="nav-home" class="active"><a href="#">Home</a></li>
-                    <li id="nav-about" class=""><a href="#">About</a></li>
-                    <li id="nav-access"><a href="#">Access</a></li>
-                    <li id="nav-recommend"><a href="#recommend">Recommendations</a></li>
-                    <li id="nav-reserve" style="float: right;"><a class="btn-white">Reserve</a></li> 
-                </ul>
-            </nav>-->
-        </div>
-        <div id="nav-overlay" class="nav-overlay">
-            <a href="javascript:void(0)" class="close-nav-overlay" onclick="toggleNavOverlay()">&times;</a>
-            <div class="nav-overlay-content">
-                <h2 id="site-title">THE COCOON TOWER HOTEL</h2>
-                <div class="row">
-                    <div class="column nav-items">
-                        <a href="#hero1">Home</a>
-                        <a href="#hero2">About</a>
-                        <a href="#hero3">Access</a>
-                        <a href="#gallery">Gallery</a>
-                        <a href="#recommend">Recommendations</a>
-                        <a id="nav-reserve" href="#" onclick="toggleModal('reservation')">Reserve</a>
-                    </div>
-                    <div class="column">
-                        <!-- <h3>住所</h3> -->
-                        <p>
-                            <a href="https://maps.app.goo.gl/vwmy7BP6FQzSC3Pc6">
-                                〒160-0023<br/>
-                                東京都新宿区<br/>
-                                西新宿1丁目7-2
-                            </a>
-                        </p>
-                        <!-- <h3>連絡先</h3> -->
-                        <p>
-                            <a href="tel:03-3344-1010">03-3344-1010</a><br/>
-                            <a href="mailto:hello@hal.placeholder">hello@hal.placeholder</a><br/>
-                        </p>
+            <div id="nav-overlay" class="nav-overlay">
+                <a href="javascript:void(0)" class="close-nav-overlay" onclick="toggleNavOverlay()">&times;</a>
+                <div class="nav-overlay-content">
+                    <h2 id="site-title">THE COCOON TOWER HOTEL</h2>
+                    <div class="row">
+                        <div class="column nav-items">
+                            <a href="#hero1">Home</a>
+                            <a href="#hero2">About</a>
+                            <a href="#hero3">Access</a>
+                            <a href="#gallery">Gallery</a>
+                            <a href="#recommend">Recommendations</a>
+                            <a id="nav-reserve" href="#" onclick="toggleModal('reservation')">Reserve</a>
+                        </div>
+                        <div class="column">
+                            <!-- <h3>住所</h3> -->
+                            <p>
+                                <a href="https://maps.app.goo.gl/vwmy7BP6FQzSC3Pc6">
+                                    〒160-0023<br/>
+                                    東京都新宿区<br/>
+                                    西新宿1丁目7-2
+                                </a>
+                            </p>
+                            <!-- <h3>連絡先</h3> -->
+                            <p>
+                                <a href="tel:03-3344-1010">03-3344-1010</a><br/>
+                                <a href="mailto:hello@hal.placeholder">hello@hal.placeholder</a><br/>
+                            </p>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
-        <div id="content" class="container" navcolor="white">
             <div id="modal-backdrop" class="modal-backdrop"></div>
-            <div id="hero1" class="hero">
+            <div id="hero1" class="hero" onfocus="navbarMode('transparent')">
                 <div id="reservation" class="modal" onload="fetchReservations()">
                     <div class="modal-content">
                         <div class="modal-header">
@@ -84,9 +84,9 @@
                                     <th class="icon-warning" style="font-size: 1.5em;">&#10005;</th>
                                 </tr>
                                 <tr>
-                                    <td style="font-size: 0.75em;">空室あり</td>
-                                    <td style="font-size: 0.75em;">空室少し残り</td>
-                                    <td style="font-size: 0.75em;">空室なし</td>
+                                    <td style="font-size: 0.75em;">空室</td>
+                                    <td style="font-size: 0.75em;">少し残り</td>
+                                    <td style="font-size: 0.75em;">満室</td>
                                 </tr>
                             </table>
                             <p>TODO: insert calendar here, with dates prefilled using fetchReservations()</p>
@@ -127,7 +127,7 @@
                 </div>
                 <span class="down-indicator">&darr;</span>
             </div>
-            <div id="hero2" class="hero" navcolor="white">
+            <div id="hero2" class="hero" navcolor="white" onfocus="navbarMode('white')">
                 <div id="hero2-title" class="hero-title">
                     <h1>AN ICONIC LANDMARK</h1>
                     <span class="stext">with an unprecedented view of the nightlife</span> 
