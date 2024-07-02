@@ -132,6 +132,11 @@ a.btn-white {
     cursor: pointer;
     border-radius: 5px;
 }
+a.btn-white:hover {
+    border: solid 1px gray;
+    color: gray;
+    transition: 0.2s;
+}
 a.btn-default {
     background-color: transparent;
     border: solid 1px black;
@@ -143,6 +148,11 @@ a.btn-default {
     /* font-size: 16px; */
     cursor: pointer;
     border-radius: 5px;
+}
+a.btn-default:hover {
+    border: solid 1px gray;
+    color: gray;
+    transition: 0.2s;
 }
 
 .modal {
@@ -424,6 +434,40 @@ a.btn-default {
     top: 0;
     width: 100%;
 }
+
+.recommendation {
+    .recommendation-item {
+        .recommendation-side {
+            padding: 1% 2%;
+            margin: auto;
+            height: 100%;
+            width: 100%;
+            .recommendation-image {
+                max-width: 100%;
+                max-height: 100%;
+                border-radius: 5px;
+                
+            }
+        }
+        .recommendation-title {
+            font-size: 2em;
+            font-weight: bold;
+            margin: 0;
+            padding: 0;
+        }
+        .recommendation-details {
+            font-size: 0.75em;
+            margin: 0;
+            padding: 0;
+        }
+        .recommendation-text {
+            font-size: 1em;
+            margin: 0;
+            padding: 0;
+        }
+    }
+}
+
 /* #navbar ul {
     list-style-type: none;
     /* overflow: hidden; */
