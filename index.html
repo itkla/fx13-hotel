@@ -6,6 +6,11 @@
         <meta content="IE=edge" http-equiv="X-UA-Compatible">
         <title>The コクーンタワー Hotel</title>
         <link rel="stylesheet" href="css/style.css">
+        <style>
+            yuurr {
+                background: linear-gradient(#f49ac2, #ff72b1);
+            }
+        </style>
     </head>
     <body>
         <div id="content" class="container" navcolor="white">
@@ -187,14 +192,19 @@
                 
             </div>
             <div id="recommend" class="hero">
+                <!-- おすすめのモーダル -->
                 <div id="hunter-rec" class="modal">
                     <div class="modal-content">
+                        <!-- ヘッダーがここに入る -->
                         <div class="modal-header">
+                            <!-- toggleModal() を使う時必ず同じidを入る -->
                             <span class="close" onclick="toggleModal('hunter-rec')">&times;</span>
                             <h2>Hunter's Recommendations</h2>
                         </div>
+                        <!-- 内容がここに入る -->
                         <div class="modal-body">
                             <div class="recommendation">
+                                <!-- 一つのレストランについての詳細がここに入る -->
                                 <div class="row recommendation-item"> 
                                     <div class="column recommendation-side">
                                         <img class="recommendation-image" src="img/recommendations/hunter/IMG_1481.jpg" alt="oysters">
@@ -208,6 +218,7 @@
                                         <p>美味しいけど、高い。</p>
                                     </div>
                                 </div>
+                                <!-- 一つのレストランについての詳細がここに入る -->
                                 <div class="row recommendation-item">
                                     <div class="column recommendation-side">
                                         <h2 class="recommendation-title">焼肉ライク</h2>
@@ -221,6 +232,7 @@
                                         <img class="recommendation-image" src="img/recommendations/hunter/IMG_1636.jpg" alt="yakiniku">
                                     </div>
                                 </div>
+                                <!-- 一つのレストランについての詳細がここに入る -->
                                 <div class="row recommendation-item">
                                     <div class="column recommendation-side">
                                         <img class="recommendation-image" src="img/recommendations/hunter/IMG_1550.jpg" alt="taiwan">
@@ -252,17 +264,44 @@
                             <a class="btn-white" style="color: #1c8f9e;" onclick="toggleModal('hunter-rec')">Learn more</a>
                         </div>
                     </div>
-                    <div class="card" style="border: solid #f49ac2 4px;">
-                        <h1>test 2</h1>
-                        <p>test</p>
+                    <div class="modal" id="who-rec">
+
                     </div>
-                    <div class="card" style="border: solid #98fb98 4px;">
-                        <h1>test 3</h1>
-                        <p>test</p>
+                    <div class="card" style="background: linear-gradient(145deg, #f49ac2, #ff72b1);">
+                        <div class="card-title">
+                            <img class="avatar" src="img/avatar/placeholder.png">
+                            <h1 class="name" style="color: white;">〇〇のおすすめ</h1>
+                        </div>
+                        <div class="card-body" style="color: white;">
+                            <p>placeholder</p>
+                        </div>
+                        <div class="card-footer">
+                            <a class="btn-white" style="color: #ff72b1;">詳細を見る</a>
+                        </div>
                     </div>
-                    <div class="card" style="border: solid #ffd900 4px;">
-                        <h1>test 4</h1>
-                        <p>test</p>
+                    <div class="card" style="background: linear-gradient(145deg, #98fb98, #1c8f9e);">
+                        <div class="card-title">
+                            <img class="avatar" src="img/avatar/placeholder.png">
+                            <h1 class="name" style="color: white;">〇〇のおすすめ</h1>
+                        </div>
+                        <div class="card-body" style="color: white;">
+                            <p>placeholder</p>
+                        </div>
+                        <div class="card-footer">
+                            <a class="btn-white" style="color: #1c8f9e;">詳細を見る</a>
+                        </div>
+                    </div>
+                    <div class="card" style="background: linear-gradient(145deg, #ffd900,#ff6a00);">
+                        <div class="card-title">
+                            <img class="avatar" src="img/avatar/placeholder.png">
+                            <h1 class="name" style="color: white;">〇〇のおすすめ</h1>
+                        </div>
+                        <div class="card-body" style="color: white;">
+                            <p>placeholder</p>
+                        </div>
+                        <div class="card-footer">
+                            <a class="btn-white" style="color: #ff6a00;">詳細を見る</a>
+                        </div>
                     </div>
                 </div>
                 <div id="hero5-title" class="hero-title">
