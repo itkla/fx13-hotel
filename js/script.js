@@ -143,16 +143,6 @@ function fillCalendar() {
             } else if (day <= daysInMonth) {
                 var dayCell = document.createElement('td');
                 dayCell.innerText = day;
-                // var dayReservation = 'available';
-                // if (dayReservation != "") {
-                //     switch(dayReservation) {
-                //         case 'available':
-                //             dayCell.innerText = day;
-                //             var icon = document.appendChild('span');
-                //             icon.classList.add('icon-success');
-                //             icon.innerText = '◯';
-                //     }
-                // }
                 week.appendChild(dayCell);
                 day++;
             } else {
@@ -164,31 +154,18 @@ function fillCalendar() {
     }
 }
 
-// var navbar = document.getElementById('navbar');
-// var navYOffset = navbar.offsetTop;
-// function shrinkNav() {
-//     console.log('scrolling');
-//     if (window.pageYOffset >= navYOffset) {
-//         navbar.classList.add('shrink');
-//         console.log('added class shrink to navbar');
-//     } else {
-//         navbar.classList.remove('shrink');
-//         console.log('removed class shrink from navbar');
-//     }
-// }
-
 function shrinkNav() {
     var hero1 = document.getElementById('hero1');
     var navbar = document.getElementById('navbar');
     var navbarTitle = document.getElementById('site-title');
-    console.log('hero1 offsetTop:', hero1.getBoundingClientRect());
+    // console.log('hero1 offsetTop:', hero1.getBoundingClientRect());
     if (hero1.getBoundingClientRect().top < -3) {
         navbar.style.padding = '1%';
         navbarTitle.style.fontSize = '1em';
         // navbar.style.background = 'rgba(255, 255, 255, 0.8)';
     } else {
         navbar.style.padding = '2%';
-        navbarTitle.style.fontSize = '1.5em';
+        navbarTitle.style.fontSize = '1.25em';
         // console.log('expanding navbar');
         // navbar.style.background = 'transparent';
 
@@ -202,20 +179,6 @@ document.addEventListener('DOMContentLoaded', function() {
     // fill the calendar
     fillCalendar();
 
-    // lazy load images
-    // var lazyImages = document.getElementsByClassName('lazy');
-    // if ("IntersectionObserver" in windowu)
-
-    // navbar sticky
-    // var navbar = document.getElementById('navbar');
-    // var navYOffset = navbar.offsetTop;
-    // function stickyNav() {
-    //     if (window.pageYOffset >= navYOffset) {
-    //         navbar.classList.add('sticky');
-    //     } else {
-    //         navbar.classList.remove('sticky');
-    //     }
-    // }
     document.getElementById('content').onscroll = function() {
         console.log('scrolling');
         shrinkNav();
@@ -281,17 +244,3 @@ function initMap() {
 ]
     });
 }
-// } else {
-//     var lang = navigator.language || navigator.userLanguage;
-//     switch(lang) {
-//         case 'ja':
-//             document.title = 'コクーンタワー ホテル';
-//             break;
-//         case 'en':
-//             document.title = 'The Cocoon Tower Hotel';
-//             break;
-//         default:
-//             document.title = 'The Cocoon Tower Hotel';
-//             break;
-//     }
-// }
