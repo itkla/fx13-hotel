@@ -43,19 +43,19 @@ if (urlParams.has('lang') || navigator.language || navigator.userLanguage) {
     switch(true) {
         case lang === 'ja' || lang === 'ja-JP':
             console.log('Language:', lang);
-            document.title = 'コクーンタワー ホテル';
-            document.getElementById('site-title').innerText = 'コクーンタワー ホテル';
+            document.title = 'コクーンタワー';
+            document.getElementById('site-title').innerText = 'コクーンタワー';
 
             break;
         case lang === 'en' || lang === 'en-US':
             console.log('Language:', lang);
-            document.title = 'The Cocoon Tower Hotel';
-            document.getElementById('site-title').innerText = 'THE COCOON TOWER HOTEL';
+            document.title = 'The Cocoon Tower';
+            document.getElementById('site-title').innerText = 'THE COCOON TOWER';
             break;
         default:
             console.log('Language:', lang);
-            document.title = 'The Cocoon Tower Hotel';
-            document.getElementById('site-title').innerText = 'THE COCOON TOWER HOTEL';
+            document.title = 'The Cocoon Tower';
+            document.getElementById('site-title').innerText = 'THE COCOON TOWER';
             break;
     }
 }
@@ -70,9 +70,9 @@ function toggleNavOverlay() {
     var navOverlayButton = document.getElementById('nav-overlay-button');
     if (navOverlay.style.display === 'none' || navOverlay.style.display === '') {
         navOverlay.style.display = 'block';
-        navOverlay.style.animation = 'slideRight 0.5s ease-in-out forwards';
-    } else {
         navOverlay.style.animation = 'slideLeft 0.5s ease-in-out forwards';
+    } else {
+        navOverlay.style.animation = 'slideRight 0.5s ease-in-out forwards';
         navOverlay.addEventListener('animationend', function handler() {
             navOverlay.style.display = 'none';
             navOverlay.removeEventListener('animationend', handler);
@@ -180,7 +180,7 @@ document.addEventListener('DOMContentLoaded', function() {
     fillCalendar();
 
     document.getElementById('content').onscroll = function() {
-        console.log('scrolling');
+        // console.log('scrolling');
         shrinkNav();
     }
     

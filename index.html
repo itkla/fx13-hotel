@@ -4,7 +4,7 @@
         <meta charset="utf-8">
         <meta content="width=device-width, initial-scale=1.0" name="viewport">
         <meta content="IE=edge" http-equiv="X-UA-Compatible">
-        <title>The コクーンタワー Hotel</title>
+        <title>The コクーンタワー</title>
         <link rel="stylesheet" href="css/style.css">
         <style>
             yuurr {
@@ -16,13 +16,14 @@
         <div id="content" class="container" navcolor="white">
             <div class="navbar" id="navbar">
                 <div class="navbar-left">
-                    <a onclick="toggleNavOverlay()" style="float: left;">&#9776;</a>
+                    
                 </div>
                 <div class="navbar-center">
                     <span id="site-title" class="site-title">The Cocoon Tower</span>
                 </div>
                 <div class="navbar-right">
-                    <a id="nav-reserve" class="btn-default" onclick="toggleModal('reservation')">Reserve</a>
+                    <!-- <a id="nav-reserve" class="btn-default" onclick="toggleModal('reservation')">Reserve</a> -->
+                    <a onclick="toggleNavOverlay()" style="float: right; font-size: 2em;">&#9776;</a>
                 </div>
                 <!-- <span style="text-align: center;">COCOON</span>TODO: put this mf in the center -->
                 <!-- <a href="#">Home</a>
@@ -45,7 +46,7 @@
             <div id="nav-overlay" class="nav-overlay">
                 <a href="javascript:void(0)" class="close-nav-overlay" onclick="toggleNavOverlay()">&times;</a>
                 <div class="nav-overlay-content">
-                    <h2 id="site-title">THE COCOON TOWER HOTEL</h2>
+                    <h2 id="site-title">THE COCOON TOWER</h2>
                     <div class="row">
                         <div class="column nav-items">
                             <a href="#hero1">Home</a>
@@ -128,7 +129,7 @@
                 </div>
                 <div id="hero1-title" class="hero-title">
                     <h1>THE COCOON TOWER</h1>
-                    <span class="stext">A modern hotel in the heart of Tokyo</span>
+                    <span class="stext">A modern tower in the heart of Tokyo</span>
                 </div>
                 <span class="down-indicator">&darr;</span>
             </div>
@@ -151,27 +152,30 @@
             </div>
             <div class="h-tiles">
                 <div class="h-tile">
-                    <div id="more-info1" class="hero" navcolor="black">
-                        <div id="" class="hero-title">
-                            <h1>Horizontal test scroll</h1>
-                            <span class="stext">eatn a burger wit no hunny mustard</span>
+                    <div id="more-info1" class="hero" navcolor="black" style="display: grid;">
+                        <div id="hal" class="hero-title">
+                            <h1>HAL東京</h1>
+                            <span class="stext">Building tomorrow's pros</span>
+                        </div>
+                        <div class="hero-body">
+                            <h1>test</h1>
                         </div>
                         <span class="right-indicator">&rarr;</span>
                     </div>
                 </div>
                 <div class="h-tile">
                     <div id="more-info2" class="hero">
-                        <div id="" class="hero-title">
-                            <h1>Horizontal test scroll</h1>
-                            <span class="stext">eatn a burger wit no hunny mustard</span>
+                        <div id="mode" class="hero-title">
+                            <h1>モード学園</h1>
+                            <span class="stext">Turn your personality into talent</span>
                         </div>
                     </div>
                 </div>
                 <div class="h-tile">
                     <div id="more-info3" class="hero">
-                        <div id="" class="hero-title">
-                            <h1>Horizontal test scroll</h1>
-                            <span class="stext">eatn a burger wit no hunny mustard</span>
+                        <div id="iko" class="hero-title">
+                            <h1>首都医校</h1>
+                            <span class="stext">Save a life, together</span>
                         </div>
                         <div class="modal"></div>
                         <a class="btn-default">Modal test</a>
@@ -311,8 +315,8 @@
                     <span class="stext"></span>
                 </div>
             </div>
-            <div id="access" class="hero">
-                    <!-- <iframe src="https://www.google.com/maps/d/u/0/embed?mid=1Bg9kp7AApmW0l66FeEsxdD2ntPkf7OU&ehbc=2E312F" style="width: 100%; height: 100%; border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe> -->
+            <div id="access" class="hero" style="display: grid;">
+                    <iframe style="align-self: center; justify-self: center;" width="80%" height="80%" frameborder="0" style="border:0" src="https://www.google.com/maps/embed/v1/directions?key=AIzaSyBlk9heOmeRfxLbNpd3OLAIwO1pcEXzSV8&origin=Shinjuku+Station&destination=コクーンタワー&mode=walking" allowfullscreen></iframe>
                 <div id="hero6-title" class="hero-title">
                     <h1>ACCESS</h1>
                     <span class="stext"></span>
@@ -320,7 +324,7 @@
             </div>
             <div id="footer" class="hero">
                 <div id="footer-title" class="hero-title">
-                    <h1>THE COCOON TOWER HOTEL</h1>
+                    <h1>THE COCOON TOWER</h1>
                     <span class="stext" onload="getCopyrightYear()">&copy; <span id="copyright-year"></span> コクーンタワー</span>
                 </div>
             </div>

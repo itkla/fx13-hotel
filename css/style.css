@@ -12,8 +12,8 @@ html, body {
     position: relative;
 }
 .container {
-    scroll-snap-type: y mandatory;
-    overflow: scroll;
+    scroll-snap-type: y proximity;
+    overflow: auto;
     height: 100%;
     width: 100%;
     /* white-space: nowrap; */
@@ -29,7 +29,7 @@ html, body {
     position: relative;
     object-fit: cover;
     scroll-snap-align: start;
-    overflow: scroll;
+    overflow: auto;
     /* border: dashed 2px blue; */
 }
 .hero-gallery {
@@ -68,6 +68,15 @@ html, body {
     font-weight: bold;
     margin: 0;
     padding: 0;
+}
+.hero-body {
+    width: 75%;
+    height: 75%;
+    display: grid;
+    justify-self: center;
+    align-self: center;
+    border-radius: 20px;
+    background: white;
 }
 /* .h-scroll-container {
     overflow: auto;
@@ -312,6 +321,14 @@ a.btn-white {
     overflow: hidden;
 }
 
+.hero-section {
+    width: 80%;
+    height: 80%;
+    display: grid;
+    justify-self: center;
+    align-self: center;
+}
+
 #hero1.lazy {
     background-image: none;
     background-color: white;
@@ -365,18 +382,22 @@ a.btn-white {
 }
 
 #more-info1 {
-    background: url('../img/hero/mf1.JPG') no-repeat center center fixed;
+    /* background: url('../img/hero/mf1.JPG') no-repeat center center fixed; */
+    background: linear-gradient(145deg, #1f3a9d, #007CF7);
     object-fit: cover;
     background-repeat: no-repeat;
     background-size: cover;
     display: auto;
+    color: white;
 }
 #more-info2 {
-    background: url('../img/hero/mf2.JPG') no-repeat center center fixed;
+    /* background: url('../img/hero/mf2.JPG') no-repeat center center fixed; */
+    background: linear-gradient(145deg, #7F1616, #FF0000);
     object-fit: cover;
     background-repeat: no-repeat;
     background-size: cover;
     display: auto;
+    color: white;
 }
 /* #hero5 {
     background: url('https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1620.202212915709!2d139.69566003878313!3d35.69166419314601!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x60188cd6981dce11%3A0x4c93aeebef13825d!2sTokyo%20Mode%20Gakuen!5e0!3m2!1sen!2sjp!4v1718257670376!5m2!1sen!2sjp') no-repeat center center fixed;
@@ -432,7 +453,7 @@ a.btn-white {
         /* vertical-align: middle;
         justify-content: flex-start;
         */
-        font-size: 2em;
+        
         /* padding: 1% 0; */
     }
     .navbar-right {
@@ -616,7 +637,7 @@ a.btn-white {
     width: 100%;
     position: fixed;
     z-index: 100;
-    left: -100%;
+    right: 0;
     background-color: white;
     /* background-color: rgba(255, 255, 255, 0.9); */
     overflow-x: hidden;
