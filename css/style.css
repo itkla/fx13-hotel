@@ -295,6 +295,7 @@ a.btn-white {
     margin: 0;
     padding: 0;
     display: inline-flex;
+    object-fit: cover;
     border: solid 7px white;
 }
 .card-body {
@@ -522,6 +523,29 @@ a.btn-white {
             padding: 0;
         }
     }
+}
+
+.agree {
+    color: gray;
+    font-size: 0.75em;
+    .agree-people {
+        display: grid;
+        /* padding: 1%; */
+        .agree-pfp {
+            img {
+                width: 7%;
+                height: auto;
+                border-radius: 50%;
+                margin: 0;
+                padding: 0;
+                display: inline-flex;
+                object-fit: cover;
+                /* border: solid 7px white; */
+            
+            }
+        }
+    }
+    
 }
 
 /* #navbar ul {
