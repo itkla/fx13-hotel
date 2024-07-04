@@ -158,9 +158,9 @@ function shrinkNav() {
     var hero1 = document.getElementById('hero1');
     var navbar = document.getElementById('navbar');
     var navbarTitle = document.getElementById('site-title');
-    // console.log('hero1 offsetTop:', hero1.getBoundingClientRect());
-    if (hero1.getBoundingClientRect().top < -3) {
-        navbar.style.padding = '1%';
+    console.log('hero1 offsetTop:', hero1.getBoundingClientRect());
+    if (hero1.getBoundingClientRect().top < -5) {
+        navbar.style.padding = '0.5%';
         navbarTitle.style.fontSize = '1em';
         // navbar.style.background = 'rgba(255, 255, 255, 0.8)';
     } else {

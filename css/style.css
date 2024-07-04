@@ -30,6 +30,7 @@ html, body {
     object-fit: cover;
     scroll-snap-align: start;
     overflow: auto;
+    overflow-y: hidden;
     /* border: dashed 2px blue; */
 }
 .hero-gallery {
@@ -314,38 +315,47 @@ a.btn-white {
 
 .gallery {
     width: 100%;
+    perspective: 1000px;
     height: 100%;
     display: flex;
-    margin: 5%;
-    padding: 0;
+    object-fit: cover;
+    padding: 5%;
+    /* margin: 5%; */
     flex-direction: row;
     flex-wrap: wrap;
     justify-content: center;
+    align-content: center;
     /* box-shadow: 0px 10px 20px 2px rgba(0,0,0,0.05); */
     overflow: hidden;
     .gallery-item {
         width: 25%;
         max-height: 100%;
+        /* padding: 1%; */
         overflow: hidden;
-        
+        /* margin: 5%; */
         /* border-radius: 20px; */
         box-shadow: 0px 30px 50px 10px rgba(0,0,0,0.05);
         object-fit: cover;
-        img {
+        /* img {
             width: 100%;
             height: 100%;
-            /* border-radius: 20px; */
+            border-radius: 20px;
             object-fit: cover;
-        }
+            padding: 5%;
+        } */
         /* box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19); */
     }
     .gallery-item:hover {
-        transform: scale(1.1) rotate3d(1, 1, 0, 0deg);
+        /* transform: scale(1.1) rotate3d(0, 1, 0, 0deg); */
+        transform: scale(1.1);
         filter: grayscale(0%);
         transition: 0.2s ease-in-out;
+        z-index: 1;
     }
     .gallery-item:not(:hover) {
-        transform: scale(1) rotate3d(0, 1, 0, 45deg);
+        z-index: 0;
+        /* transform: scale(1) rotate3d(0, 1, 0, 30deg); */
+        transform: scale(1);
         filter: grayscale(100%);
         transition: 0.2s ease-in-out;
     }
@@ -403,13 +413,13 @@ a.btn-white {
     border: dotted 1px red;
     overflow: hidden;
 } */
-#gallery {
-    /* background: url('img/hero/hero4.jpg') no-repeat center center fixed; */
+/* #gallery {
+    background: url('img/hero/hero4.jpg') no-repeat center center fixed;
     object-fit: cover;
     background-repeat: no-repeat;
     background-size: cover;
     display: auto;
-}
+} */
 
 #more-info1 {
     /* background: url('../img/hero/mf1.JPG') no-repeat center center fixed; */
