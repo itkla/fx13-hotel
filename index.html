@@ -255,6 +255,35 @@
                         </div>
                     </div>
                 </div>
+                <div id="megumu-rec" class="modal">
+                    <div class="modal-content">
+                        <!-- ヘッダーがここに入る -->
+                        <div class="modal-header">
+                            <!-- toggleModal() を使う時必ず同じidを入る -->
+                            <span class="close" onclick="toggleModal('megumu-rec')">&times;</span>
+                            <h2>めぐむのおすすめ</h2>
+                        </div>
+                        <!-- 内容がここに入る -->
+                        <div class="modal-body">
+                            <div class="recommendation">
+                                <!-- 一つのレストランについての詳細がここに入る。必要に応じて繰り返すね -->
+                                <div class="row recommendation-item"> 
+                                    <div class="column recommendation-side">
+                                        <img class="recommendation-image" src="img/recommendations/ooya/IMG_4275.JPG" alt="malatan">
+                                    </div>
+                                    <div class="column recommendation-side">
+                                        <h2 class="recommendation-title">?</h2>
+                                        <span class="recommendation-details">
+                                            「ここに住所を記入」<br>
+                                            <a class="tabelog" href="食べログのURL" target="_blank">食べログ</a>
+                                        </span>
+                                        <p>「ここに意見を記入」</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
                 <!-- END おすすめのモーダル -->
                 <div class="cards">
                     <div class="card" style="background: linear-gradient(145deg, #89cfeb, #1c8f9e);">
@@ -282,7 +311,7 @@
                             <p>placeholder</p>
                         </div>
                         <div class="card-footer">
-                            <a class="btn-white" style="color: #ff72b1;">詳細を見る</a>
+                            <a class="btn-white" style="color: #ff72b1;" onclick="toggleModal('megumu-rec')">詳細を見る</a>
                         </div>
                     </div>
                     <div class="card" style="background: linear-gradient(145deg, #98fb98, #1c8f9e);">
