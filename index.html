@@ -6,11 +6,6 @@
         <meta content="IE=edge" http-equiv="X-UA-Compatible">
         <title>The コクーンタワー</title>
         <link rel="stylesheet" href="css/style.css">
-        <style>
-            yuurr {
-                background: linear-gradient(#f49ac2, #ff72b1);
-            }
-        </style>
     </head>
     <body>
         <div id="content" class="container" navcolor="white">
@@ -51,10 +46,12 @@
                         <div class="column nav-items">
                             <a href="#hero1">Home</a>
                             <a href="#hero2">About</a>
-                            <a href="#hero3">Access</a>
-                            <a href="#gallery">Gallery</a>
+                            <a href="#hero3">Interior</a>
+                            <a href="#schools">Schools</a>
                             <a href="#recommend">Recommendations</a>
-                            <a id="nav-reserve" href="#" onclick="toggleModal('reservation')">Reserve</a>
+                            <a href="#gallery">Gallery</a>
+                            <a href="#access">Access</a>
+                            <a id="nav-reserve" href="#" onclick="toggleModal('reservation')">?</a>
                         </div>
                         <div class="column">
                             <!-- <h3>住所</h3> -->
@@ -129,14 +126,14 @@
                 </div>
                 <div id="hero1-title" class="hero-title">
                     <h1>THE COCOON TOWER</h1>
-                    <span class="stext">A modern tower in the heart of Tokyo</span>
+                    <span class="stext">東京の中心にあるモダンなタワー</span>
                 </div>
                 <span class="down-indicator">&darr;</span>
             </div>
             <div id="hero2" class="hero" navcolor="white" onfocus="navbarMode('white')">
                 <div id="hero2-title" class="hero-title">
                     <h1>AN ICONIC LANDMARK</h1>
-                    <span class="stext">with an unprecedented view of the nightlife</span> 
+                    <span class="stext">夜景を一望できる象徴的なランドマーク</span> 
                 </div>
             </div>
             <div id="hero3" class="hero" navcolor="black">
@@ -147,18 +144,19 @@
                         <img src="img/gallery/03.jpg" alt="Gallery 3"> -->
                     </div>
                     <h1>A CLASSY INTERIOR</h1>
-                    <span class="stext">for all of your relaxation needs</span>
+                    <span class="stext">あらゆるリラクゼーションニーズに対応</span>
                 </div>
             </div>
-            <div class="h-tiles">
+            <div class="h-tiles" id="schools">
                 <div class="h-tile">
                     <div id="more-info1" class="hero" navcolor="black" style="display: grid;">
+                        <video width="100%" height="100%" class="video-background" id="hal-background" autoplay muted loop poster="img/hero/hal-backgroundvideo-poster.jpg">
+                            <source src="img/hero/hal-backgroundvideo.webm" type="video/webm">
+                            Why this no work bruh?
+                        </video>
                         <div id="hal" class="hero-title">
                             <h1>HAL東京</h1>
                             <span class="stext">Building tomorrow's pros</span>
-                        </div>
-                        <div class="hero-body">
-                            <h1>test</h1>
                         </div>
                         <span class="right-indicator">&rarr;</span>
                     </div>
@@ -177,12 +175,14 @@
                 </div>
                 <div class="h-tile">
                     <div id="more-info3" class="hero">
+                        <video width="100%" height="100%" class="video-background" id="iko-background" autoplay muted loop poster="img/hero/iko-backgroundvideo-poster.jpg">
+                            <source src="img/hero/iko-backgroundvideo.webm" type="video/webm">
+                            Why this no work bruh?
+                        </video>
                         <div id="iko" class="hero-title">
                             <h1>首都医校</h1>
                             <span class="stext">Save a life, together</span>
                         </div>
-                        <div class="modal"></div>
-                        <a class="btn-default">Modal test</a>
                     </div>
                 </div>
             </div>
@@ -404,7 +404,7 @@
                 </div>
             </div>
             <div id="access" class="hero" style="display: grid;">
-                <iframe style="align-self: center; justify-self: center;" width="80%" height="80%" frameborder="0" style="border:0" src="https://www.google.com/maps/embed/v1/directions?key=AIzaSyBlk9heOmeRfxLbNpd3OLAIwO1pcEXzSV8&origin=Shinjuku+Station&destination=コクーンタワー&mode=walking" allowfullscreen></iframe>
+                <iframe style="align-self: center; justify-self: center;" width="100%" height="100%" frameborder="0" style="border:0" src="https://www.google.com/maps/embed/v1/directions?key=AIzaSyBlk9heOmeRfxLbNpd3OLAIwO1pcEXzSV8&origin=Shinjuku+Station&destination=コクーンタワー&mode=walking" allowfullscreen></iframe>
                 <div id="hero6-title" class="hero-title">
                     <h1>ACCESS</h1>
                     <span class="stext"></span>
@@ -413,7 +413,7 @@
             <div id="footer" class="hero">
                 <div id="footer-title" class="hero-title">
                     <h1>THE COCOON TOWER</h1>
-                    <span class="stext" onload="getCopyrightYear()">&copy; <span id="copyright-year"></span> コクーンタワー</span>
+                    <span class="stext" onload="getCopyrightYear()">&copy; <span id="copyright-year"></span> 中川 ハンター、大谷 萌、鍾 承翰、国府田 茜</span>
                 </div>
             </div>
         </div>
