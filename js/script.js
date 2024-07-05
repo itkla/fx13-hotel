@@ -44,18 +44,18 @@ if (urlParams.has('lang') || navigator.language || navigator.userLanguage) {
         case lang === 'ja' || lang === 'ja-JP':
             console.log('Language:', lang);
             document.title = 'コクーンタワー';
-            document.getElementById('site-title').innerText = 'コクーンタワー';
+            // document.getElementById('site-title').innerText = 'コクーンタワー';
 
             break;
         case lang === 'en' || lang === 'en-US':
             console.log('Language:', lang);
             document.title = 'The Cocoon Tower';
-            document.getElementById('site-title').innerText = 'THE COCOON TOWER';
+            // document.getElementById('site-title').innerText = 'THE COCOON TOWER';
             break;
         default:
             console.log('Language:', lang);
             document.title = 'The Cocoon Tower';
-            document.getElementById('site-title').innerText = 'THE COCOON TOWER';
+            // document.getElementById('site-title').innerText = 'THE COCOON TOWER';
             break;
     }
 }
@@ -158,14 +158,29 @@ function shrinkNav() {
     var hero1 = document.getElementById('hero1');
     var navbar = document.getElementById('navbar');
     var navbarTitle = document.getElementById('site-title');
-    console.log('hero1 offsetTop:', hero1.getBoundingClientRect());
+    var navOverlayButton = document.getElementById('nav-overlay-button');
+    // console.log('hero1 offsetTop:', hero1.getBoundingClientRect());
     if (hero1.getBoundingClientRect().top < -5) {
         navbar.style.padding = '0.5%';
+        navbar.style.background = 'white';
         navbarTitle.style.fontSize = '1em';
+        navbarTitle.style.color = 'black';
+        navOverlayButton.style.color = 'black';
+        navbarTitle.innerHTML = 'THE COCOON TOWER';
         // navbar.style.background = 'rgba(255, 255, 255, 0.8)';
     } else {
         navbar.style.padding = '2%';
         navbarTitle.style.fontSize = '1.25em';
+        // navbarTitle.style.color = 'white';
+        // navbar.style.color = 'white';
+        navOverlayButton.style.color = 'white';
+        navbar.style.background = 'transparent';
+        navbarTitle.innerHTML = '';
+        // navbar.addEventListener('animationend', function handler() {
+        //     console.log('navbar animation ended')
+            
+        //     navbar.removeEventListener('animationend', handler);
+        // }, {once: true});
         // console.log('expanding navbar');
         // navbar.style.background = 'transparent';
 

@@ -19,11 +19,11 @@
                     
                 </div>
                 <div class="navbar-center">
-                    <span id="site-title" class="site-title">The Cocoon Tower</span>
+                    <span id="site-title" class="site-title"></span>
                 </div>
                 <div class="navbar-right">
                     <!-- <a id="nav-reserve" class="btn-default" onclick="toggleModal('reservation')">Reserve</a> -->
-                    <a onclick="toggleNavOverlay()" style="float: right; font-size: 2em;">&#9776;</a>
+                    <a id="nav-overlay-button" onclick="toggleNavOverlay()" style="float: right; font-size: 2em;">&#9776;</a>
                 </div>
                 <!-- <span style="text-align: center;">COCOON</span>TODO: put this mf in the center -->
                 <!-- <a href="#">Home</a>
@@ -80,7 +80,7 @@
                     <div class="modal-content">
                         <div class="modal-header">
                             <span class="close" onclick="toggleModal('reservation')">&times;</span>
-                            <h1 id="resv-title-str">当ホテルに予約</h1>
+                            <h1 id="resv-title-str">コクーンタワーに泊まれ</h1>
                         </div>
                         <div class="modal-body">
                             <table id="calendar-legend">
