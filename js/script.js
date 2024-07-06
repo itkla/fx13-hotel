@@ -107,6 +107,8 @@ for (var i = 0; i < navLinks.length; i++) {
 }
 
 // toggle modal controller
+
+// TODO: close modal when clicking outside of modal
 function toggleModal(id) {
     // idはモーダルのidと同じ
     var modal = document.getElementById(id);
