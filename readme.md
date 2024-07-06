@@ -1,6 +1,6 @@
 # The Cocoon Tower Hotel
 
-FX13のためのプロジェクト。
+View the latest build of this website at [https://lab.klae.ooo/fx13/cocoontower](https://lab.klae.ooo/fx13/cocoontower)
 
 ## デザイン
 元々は、ホテルのサイトとして作られました。
