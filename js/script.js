@@ -38,6 +38,25 @@ document.getElementById('copyright-year').innerText = year;
 // 言語設定
 const queryString = window.location.search;
 const urlParams = new URLSearchParams(queryString);
+
+var title_strings = {
+    'en': {
+        'site-title': 'THE COCOON TOWER',
+        'h1': {
+            'title': 'THE COCOON TOWER',
+            'subtitle': 'A modern marvel in the heart of Tokyo'
+        },
+        'h2': {
+            'title': 'AN ICONIC LANDMARK',
+            'subtitle': 'with an unprecedented view of the nightlife'
+        },
+        'h3': {
+            'title': 'A CLASSY INTERIOR',
+            'subtitle': 'for all of your relaxation needs'
+        },
+    },
+}
+
 if (urlParams.has('lang') || navigator.language || navigator.userLanguage) {
     var lang = urlParams.get('lang') || navigator.language || navigator.userLanguage;
     switch(true) {
@@ -45,11 +64,10 @@ if (urlParams.has('lang') || navigator.language || navigator.userLanguage) {
             console.log('Language:', lang);
             document.title = 'コクーンタワー';
             // document.getElementById('site-title').innerText = 'コクーンタワー';
-
             break;
         case lang === 'en' || lang === 'en-US':
             console.log('Language:', lang);
-            document.title = 'The Cocoon Tower';
+            document.title = 'THE COCOON TOWER';
             // document.getElementById('site-title').innerText = 'THE COCOON TOWER';
             break;
         default:

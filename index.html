@@ -20,23 +20,6 @@
                     <!-- <a id="nav-reserve" class="btn-default" onclick="toggleModal('reservation')">Reserve</a> -->
                     <a id="nav-overlay-button" onclick="toggleNavOverlay()" style="float: right; font-size: 2em;">&#9776;</a>
                 </div>
-                <!-- <span style="text-align: center;">COCOON</span>TODO: put this mf in the center -->
-                <!-- <a href="#">Home</a>
-                <a href="#about">About</a>
-                <a href="#gallery">Gallery</a>
-                <a href="#recommend">Recommendations</a>
-                <a href="#nav-reserve">Reserve</a> -->
-                <!-- <nav>
-                    <ul>
-                        <span onclick="openNavOverlay()">&#9776;</span>
-                        <li id="nav-logo"><a id="site-title" href="#"></a></li>
-                        <li id="nav-home" class="active"><a href="#">Home</a></li>
-                        <li id="nav-about" class=""><a href="#">About</a></li>
-                        <li id="nav-access"><a href="#">Access</a></li>
-                        <li id="nav-recommend"><a href="#recommend">Recommendations</a></li>
-                        <li id="nav-reserve" style="float: right;"><a class="btn-white">Reserve</a></li> 
-                    </ul>
-                </nav>-->
             </div>
             <div id="nav-overlay" class="nav-overlay">
                 <a href="javascript:void(0)" class="close-nav-overlay" onclick="toggleNavOverlay()">&times;</a>
@@ -51,7 +34,7 @@
                             <a href="#recommend">Recommendations</a>
                             <a href="#gallery">Gallery</a>
                             <a href="#access">Access</a>
-                            <a id="nav-reserve" href="#" onclick="toggleModal('reservation')">?</a>
+                            <a id="nav-reserve" href="#" onclick="toggleModal('reservation')">.</a>
                         </div>
                         <div class="column">
                             <!-- <h3>住所</h3> -->
@@ -125,26 +108,23 @@
                     </div>
                 </div>
                 <div id="hero1-title" class="hero-title">
-                    <h1>THE COCOON TOWER</h1>
-                    <span class="stext">東京の中心にあるモダンなタワー</span>
+                    <h1 id="h1-title">THE COCOON TOWER</h1>
+                    <span id="h1-subtext" class="stext">東京の中心にあるモダンなタワー</span>
                 </div>
                 <span class="down-indicator">&darr;</span>
             </div>
             <div id="hero2" class="hero" navcolor="white" onfocus="navbarMode('white')">
                 <div id="hero2-title" class="hero-title">
-                    <h1>AN ICONIC LANDMARK</h1>
-                    <span class="stext">夜景を一望できる象徴的なランドマーク</span> 
+                    <h1 id="h2-title">AN ICONIC LANDMARK</h1>
+                    <span id="h2-subtext" class="stext">夜景を一望できる象徴的なランドマーク</span> 
                 </div>
             </div>
             <div id="hero3" class="hero" navcolor="black">
                 <div id="hero3-title" class="hero-title">
                     <div id="hero3-gallery" class="hero-gallery">
-                        <!-- <img src="img/gallery/01.jpg" alt="Gallery 1">
-                        <img src="img/gallery/02.jpg" alt="Gallery 2">
-                        <img src="img/gallery/03.jpg" alt="Gallery 3"> -->
                     </div>
-                    <h1>A CLASSY INTERIOR</h1>
-                    <span class="stext">あらゆるリラクゼーションニーズに対応</span>
+                    <h1 id="h3-title">A CLASSY INTERIOR</h1>
+                    <span id="h3-subtext" class="stext">あらゆるリラクゼーションニーズに対応</span>
                 </div>
             </div>
             <div class="h-tiles" id="schools">
@@ -155,8 +135,8 @@
                             Why this no work bruh?
                         </video>
                         <div id="hal" class="hero-title">
-                            <h1>HAL東京</h1>
-                            <span class="stext">Building tomorrow's pros</span>
+                            <h1 id="school-hal-title">HAL東京</h1>
+                            <span id="school-hal-subtext" class="stext">Building tomorrow's pros</span>
                         </div>
                         <span class="right-indicator">&rarr;</span>
                     </div>
@@ -168,8 +148,8 @@
                             Why this no work bruh?
                         </video>
                         <div id="mode" class="hero-title">
-                            <h1>モード学園</h1>
-                            <span class="stext">Turn your personality into talent</span>
+                            <h1 id="school-mode-title">モード学園</h1>
+                            <span id="school-mode-subtext" class="stext">Turn your personality into talent</span>
                         </div>
                     </div>
                 </div>
@@ -180,8 +160,8 @@
                             Why this no work bruh?
                         </video>
                         <div id="iko" class="hero-title">
-                            <h1>首都医校</h1>
-                            <span class="stext">Save a life, together</span>
+                            <h1 id="school-iko-title">首都医校</h1>
+                            <span id="school-iko-subtext" class="stext">Save a life, together</span>
                         </div>
                     </div>
                 </div>
@@ -189,24 +169,23 @@
             <div id="gallery" class="hero">
                 <div class="gallery">
                     <!-- TODO: not working? -->
-                     <div class="gallery-item">
-                        <img src="img/gallery/01.jpg" alt="Gallery 1">
-                     </div>
-                     <div class="gallery-item">
-                        <img src="img/gallery/02.jpg" alt="Gallery 2">
+                    <div class="gallery-item">
+                        <img src="img/gallery/IMG_0862.JPG" alt="Gallery 1">
                     </div>
                     <div class="gallery-item">
-                        <img src="img/gallery/03.jpg" alt="Gallery 3">
+                        <img src="img/gallery/IMG_0880.JPG" alt="Gallery 2">
                     </div>
                     <div class="gallery-item">
-                        <img src="img/gallery/04.jpg" alt="Gallery 4">
+                        <img src="img/gallery/DSC03218.JPG" alt="Gallery 3">
+                    </div>
+                    <div class="gallery-item">
+                        <img src="img/gallery/DSC03228.JPG" alt="Gallery 4">
                     </div>
                 </div>
                 <div id="hero4-title" class="hero-title">
-                    <h1>GALLERY</h1>
-                    <span class="stext"></span>
+                    <h1 id="h4-title">GALLERY</h1>
+                    <span id="h4-subtext" class="stext"></span>
                 </div>
-                
             </div>
             <div id="recommend" class="hero">
                 <!-- おすすめのモーダル -->
@@ -225,7 +204,7 @@
                                 <!-- 一つのレストランについての詳細がここに入る -->
                                 <div class="row recommendation-item"> 
                                     <div class="column recommendation-side">
-                                        <img class="recommendation-image" src="img/recommendations/nakagawa/IMG_1481.jpg" alt="oysters">
+                                        <img class="recommendation-image" src="img/recommendations/nakagawa/IMG_5335.jpg" alt="oysters">
                                     </div>
                                     <div class="column recommendation-side">
                                         <h2 class="recommendation-title">ガンボ＆オイスターバー</h2>
@@ -399,21 +378,21 @@
                     </div>
                 </div>
                 <div id="hero5-title" class="hero-title">
-                    <h1>火曜日のおすすめ</h1>
-                    <span class="stext"></span>
+                    <h1 id="h5-title">火曜日のおすすめ</h1>
+                    <span id="h5-subtext" class="stext"></span>
                 </div>
             </div>
             <div id="access" class="hero" style="display: grid;">
                 <iframe style="align-self: center; justify-self: center;" width="100%" height="100%" frameborder="0" style="border:0" src="https://www.google.com/maps/embed/v1/directions?key=AIzaSyBlk9heOmeRfxLbNpd3OLAIwO1pcEXzSV8&origin=Shinjuku+Station&destination=コクーンタワー&mode=walking" allowfullscreen></iframe>
                 <div id="hero6-title" class="hero-title">
-                    <h1>ACCESS</h1>
-                    <span class="stext"></span>
+                    <h1 id="h6-title">ACCESS</h1>
+                    <span id="h6-subtext" class="stext"></span>
                 </div>
             </div>
             <div id="footer" class="hero">
                 <div id="footer-title" class="hero-title">
-                    <h1>THE COCOON TOWER</h1>
-                    <span class="stext" onload="getCopyrightYear()">&copy; <span id="copyright-year"></span> 中川 ハンター、大谷 萌、鍾 承翰、国府田 茜</span>
+                    <h1 id="h7-title">THE COCOON TOWER</h1>
+                    <span id="h7-subtext" class="stext" onload="getCopyrightYear()">&copy; <span id="copyright-year"></span> 中川 ハンター、[insert name if you did work]</span>
                 </div>
             </div>
         </div>
