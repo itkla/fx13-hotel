@@ -321,6 +321,63 @@
                         </div>
                     </div>
                 </div>
+                <div id="han-rec" class="modal">
+                    <div class="modal-content">
+                        <!-- ヘッダーがここに入る -->
+                        <div class="modal-header">
+                            <!-- toggleModal() を使う時必ず同じidを入る -->
+                            <span class="close" onclick="toggleModal('han-rec')">&times;</span>
+                            <h2>ハンの昼ご飯！</h2>
+                        </div>
+                        <!-- 内容がここに入る -->
+                        <div class="modal-body">
+                            <div class="recommendation">
+                                <!-- 一つのレストランについての詳細がここに入る -->
+                                <div class="row recommendation-item"> 
+                                    <div class="column recommendation-side">
+                                        <img class="recommendation-image" src="img/recommendations/han/han_hambuger.jpg" alt="hanbuger">
+                                    </div>
+                                    <div class="column recommendation-side">
+                                        <h2 class="recommendation-title">THE SMILE ルミネエスト新宿店</h2>
+                                        <span class="recommendation-details">
+                                               
+                                            東京都新宿区新宿3-38-1 7F<br>
+                                            <a class="tabelog" href="https://tabelog.com/tokyo/A1304/A130401/13155314/" target="_blank">食べログ</a>
+                                        </span>
+                                        <p>アメリカンな雰囲気のレストラン！バーガーの種類はいっばい！その上で、デザートも多いです！</p>
+                                    </div>
+                                </div>
+                                <!-- 一つのレストランについての詳細がここに入る -->
+                                <div class="row recommendation-item">
+                                    <div class="column recommendation-side">
+                                        <h2 class="recommendation-title">テキサス 新宿野村ビル店</h2>
+                                        <span class="recommendation-details">
+                                            東京都新宿区西新宿1-26-2 新宿野村ビル B2F<br>
+                                            <a class="tabelog" href="https://tabelog.com/tokyo/A1304/A130401/13024624/" target="_blank">食べログ</a>
+                                        </span>
+                                        <p>ビルの中に隠れているこのステーキ!高価じゃない。千円ぐらいステーキを食べれます！！</p>
+                                    </div>
+                                    <div class="column recommendation-side">
+                                        <img class="recommendation-image" src="img/recommendations/han/han_steak.jpg" alt="beef">
+                                    </div>
+                                </div>
+                                <!-- 一つのレストランについての詳細がここに入る -->
+                                <div class="row recommendation-item">
+                                    <div class="column recommendation-side">
+                                        <img class="recommendation-image" src="img/recommendations/han/han_beef.jpg" alt="Betonamu">
+                                    </div>
+                                    <div class="column recommendation-side">
+                                        <h2 class="recommendation-title">名前が忘れたのビーフフォー</h2>
+                                        <span class="recommendation-details">
+                                            東京都新宿区西新宿7丁目−9−13 石川ビル<br>                                           
+                                        </span>
+                                        <p>ティさんからのおすすめです。本当に美味しかった！</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
                 <!-- END おすすめのモーダル -->
                 <!-- 人々のカード -->
 
@@ -369,13 +426,13 @@
                     <div class="card" style="background: linear-gradient(145deg, #ffd900,#ff6a00);">
                         <div class="card-title">
                             <img class="avatar" src="img/avatar/han_test.JPG">
-                            <h1 class="name" style="color: white;">ハンのおすすめtest2</h1>
+                            <h1 class="name" style="color: white;">ハンのおすすめ</h1>
                         </div>
                         <div class="card-body" style="color: white;">
-                            <p>placeholder</p>
+                            <p>いつも友達と一緒にたべます！そして、空いて教室に寝る！</p>
                         </div>
                         <div class="card-footer">
-                            <a class="btn-white" style="color: #ff6a00;">詳細を見る</a>
+                            <a class="btn-white" style="color: #ff6a00;"onclick="toggleModal('han-rec')">詳細を見る</a>
                         </div>
                     </div>
                 </div>
