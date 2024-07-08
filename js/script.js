@@ -207,6 +207,36 @@ function shrinkNav() {
     }
 }
 
+function draggable(id) {
+    let mDown = false;
+    let x, y;
+    let startOfX, scrollLeft;
+    let slider = document.getElementById(id);
+
+    const startDrag = (e) => {
+        mDown = true;
+        x = e.pageX;
+        startOfX = x - slider.offsetLeft;
+        scrollLeft = slider.scrollLeft;
+        console.log('mousedown');
+    }
+
+    const endDrag = (e) => {
+        mDown = false;
+        console.log('mouseup');
+    }
+
+    const drag = (e) => {
+        e.preventDefault();
+        if (mDown) {
+            let newX = e.pageX - startOfX;
+            slider.scrollLeft = scrollLeft - newX;
+        } else {
+            return;
+        }
+    }
+}
+
 // load nav measurements AFTER DOM has loaded.
 document.addEventListener('DOMContentLoaded', function() {
     console.log('DOM loaded');
